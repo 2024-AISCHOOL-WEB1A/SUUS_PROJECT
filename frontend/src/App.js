@@ -1,0 +1,35 @@
+
+import './App.css';
+
+function App() {
+  return (
+    <div >
+     
+<div class="fire-wrapper">
+  <img class="fire" src="imgs/rabbit.png"/>
+</div>
+
+<div class="rain rain1"></div>
+<div class="rain rain2">
+  <div class="drop drop2"></div>
+</div>
+<div class="rain rain3"></div>
+<div class="rain rain4"></div>
+<div class="rain rain5">
+  <div class="drop drop5"></div>
+</div>
+<div class="rain rain6"></div>
+<div class="rain rain7"></div>
+<div class="rain rain8">
+  <div class="drop drop8"></div>
+</div>
+<div class="rain rain9"></div>
+<div class="rain rain10"></div>
+<div class="drop drop11"></div>
+<div class="drop drop12"></div>
+<div id="canvas"></div>
+    </div>
+  );
+}
+
+export default App;
