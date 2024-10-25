@@ -1,34 +1,24 @@
-
 import './App.css';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Main from './pages/main.jsx';
+import Login from './pages/login.jsx';
+import Translate from './pages/translate.jsx';
+import Pay from './components/pay.jsx';
 
 function App() {
   return (
-    <div >
-     
-<div class="fire-wrapper">
-  <img class="fire" src="imgs/rabbit.png"/>
-</div>
-
-<div class="rain rain1"></div>
-<div class="rain rain2">
-  <div class="drop drop2"></div>
-</div>
-<div class="rain rain3"></div>
-<div class="rain rain4"></div>
-<div class="rain rain5">
-  <div class="drop drop5"></div>
-</div>
-<div class="rain rain6"></div>
-<div class="rain rain7"></div>
-<div class="rain rain8">
-  <div class="drop drop8"></div>
-</div>
-<div class="rain rain9"></div>
-<div class="rain rain10"></div>
-<div class="drop drop11"></div>
-<div class="drop drop12"></div>
-<div id="canvas"></div>
-    </div>
+    <Router>
+      <div>
+        <Routes>
+          {/* 기본 경로에 Main 컴포넌트를 렌더링 */}
+          <Route path='/' element={<Main />} />
+          {/* '/login' 경로에 Login 컴포넌트를 렌더링 */}
+          <Route path="/login" element={<Login />} />
+          <Route path="/translate" element={<Translate />} />
+          <Route path="/pay" element={<Pay/>} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
