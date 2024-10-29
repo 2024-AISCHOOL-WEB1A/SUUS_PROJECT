@@ -1,22 +1,15 @@
 import React, { useState } from 'react';
-import styled, { createGlobalStyle } from 'styled-components';
-import Header from '../components/header'
+import styled from 'styled-components';
 
-// Global styles
-const GlobalStyle = createGlobalStyle`
-  body {
-    font-family: 'Montserrat', sans-serif;
-    background-color: #f0f0f0;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
+// Wrapper styled component to center the entire container
+const Wrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f0f0f0;
 `;
 
-// Styled components for layout and styling
 const Container = styled.div`
   width: 900px;
   height: 600px;
@@ -81,7 +74,7 @@ const SwitchButton = styled.button`
   cursor: pointer;
   font-size: 16px;
   transition: 0.3s;
-  margin-top: 30px;
+  margin-top: 50px; /* Increased margin to add spacing */
 
   &:hover {
     background-color: #0056b3;
@@ -91,7 +84,7 @@ const SwitchButton = styled.button`
 const Input = styled.input`
   margin: 10px 0;
   padding: 10px;
-  width: 80%;
+  width: calc(100% - 80px); /* Adjusted to make space for CheckButton */
   border: 1px solid #ccc;
   border-radius: 5px;
 `;
@@ -112,44 +105,159 @@ const SubmitButton = styled.button`
   }
 `;
 
+const CheckButton = styled.button`
+  margin-left: 10px;
+  padding: 10px 20px; /* 버튼을 조금 더 넓게 조정 */
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 12px;
+  white-space: nowrap; /* 텍스트 줄바꿈 방지 */
+
+  &:hover {
+    background-color: #0056b3;
+  }
+`;
+const RadioContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 20px; /* 제목과의 간격을 조정 */
+  margin-bottom: 20px;
+`;
+const RadioButton = styled.label`
+  display: flex;
+  align-items: center;
+  margin: 0 10px;
+  cursor: pointer;
+  
+  input[type="radio"] {
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    border: 2px solid #28a745;
+    border-radius: 50%;
+    margin-right: 8px;
+    position: relative;
+  }
+
+  input[type="radio"]:checked::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    background-color: #28a745;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+`;
+
 const Login = () => {
   const [toggle, setToggle] = useState(false);
+  const [userType, setUserType] = useState('개인');
 
   const handleToggle = () => {
     setToggle((prevState) => !prevState);
   };
 
+  const handleUserTypeSelect = (type) => {
+    setUserType(type);
+  };
+
   return (
-   
-    <> 
-    
-      <GlobalStyle />
+    <Wrapper>
       <Container>
-        {/* Conditional rendering based on toggle state */}
         {toggle ? (
           <SignUpContainer active={!toggle}>
             <h2>회원가입</h2>
-            <Input type="text" placeholder="회사이름" />
-            <Input type="text" placeholder="담당자" />
-            <Input type="text" placeholder="Username" />
-            
-            <Input type="password" placeholder="Password" />
+            <RadioContainer>
+              <RadioButton>
+                <input
+                  type="radio"
+                  value="기업"
+                  checked={userType === '기업'}
+                  onChange={() => handleUserTypeSelect('기업')}
+                />
+                기업 회원
+              </RadioButton>
+              <RadioButton>
+                <input
+                  type="radio"
+                  value="개인"
+                  checked={userType === '개인'}
+                  onChange={() => handleUserTypeSelect('개인')}
+                />
+                개인 회원
+              </RadioButton>
+            </RadioContainer>
+
+            {userType === '기업' ? (
+              <>
+                <div style={{ display: 'flex', alignItems: 'center', width: '80%' }}>
+                  <Input type="text" placeholder="아이디" />
+                  <CheckButton>중복 확인</CheckButton>
+                </div>
+                <Input type="password" placeholder="비밀번호" style={{ width: '80%' }} />
+                <Input type="text" placeholder="담당자 이름" style={{ width: '80%' }} />
+                <Input type="text" placeholder="결제 카드" style={{ width: '80%' }} />
+              </>
+            ) : (
+              <>
+                <Input type="text" placeholder="회사 아이디" style={{ width: '80%' }} />
+                <div style={{ display: 'flex', alignItems: 'center', width: '80%' }}>
+                  <Input type="text" placeholder="회원 아이디" />
+                  <CheckButton>중복 확인</CheckButton>
+                </div>
+                <Input type="password" placeholder="비밀번호" style={{ width: '80%' }} />
+              </>
+            )}
             <SubmitButton>Sign Up</SubmitButton>
           </SignUpContainer>
         ) : (
           <SignInContainer active={toggle}>
             <h2>로그인</h2>
-        
-            <Input type="text" placeholder="ID" />
-            <Input type="password" placeholder="Password" />
+            <RadioContainer>
+              <RadioButton>
+                <input
+                  type="radio"
+                  value="기업"
+                  checked={userType === '기업'}
+                  onChange={() => handleUserTypeSelect('기업')}
+                />
+                기업 회원
+              </RadioButton>
+              <RadioButton>
+                <input
+                  type="radio"
+                  value="개인"
+                  checked={userType === '개인'}
+                  onChange={() => handleUserTypeSelect('개인')}
+                />
+                개인 회원
+              </RadioButton>
+            </RadioContainer>
+
+            {userType === '기업' ? (
+              <>
+                <Input type="text" placeholder="아이디" style={{ width: '80%' }} />
+                <Input type="password" placeholder="비밀번호" style={{ width: '80%' }} />
+              </>
+            ) : (
+              <>
+                <Input type="text" placeholder="회사 아이디" style={{ width: '80%' }} />
+                <Input type="text" placeholder="아이디" style={{ width: '80%' }} />
+                <Input type="password" placeholder="비밀번호" style={{ width: '80%' }} />
+              </>
+            )}
             <SubmitButton>Sign In</SubmitButton>
           </SignInContainer>
         )}
 
-        {/* Overlay with Switch Button */}
         <OverlayContainer toggle={toggle}>
-          {/* Image above the OverlayTitle */}
-          <img src= "./imgs/Group 73.png" alt="Group" style={{ width: '100px', marginBottom: '20px' }} />
+          <img src="./imgs/Group 73.png" alt="Group" style={{ width: '100px', marginBottom: '20px' }} />
           <OverlayTitle>{toggle ? 'Hello Friend!' : 'Welcome Back!'}</OverlayTitle>
           <p>{toggle ? '수어스 페이지에 가입해주세요.' : '수어스 홈페이지에 환영합니다'}</p>
           <SwitchButton onClick={handleToggle}>
@@ -157,7 +265,7 @@ const Login = () => {
           </SwitchButton>
         </OverlayContainer>
       </Container>
-    </>
+    </Wrapper>
   );
 };
 

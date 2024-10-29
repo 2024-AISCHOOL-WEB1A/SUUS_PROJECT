@@ -4,8 +4,9 @@ import '../css/translate.css';
 import { TweenMax, Power4 } from 'gsap'; // GSAP 설치 확인
 import Header from '../components/header'; // 헤더 임포트
 import Pay from '../components/pay'; // 차트 컴포넌트 임포트
+import Suus from '../components/suus'; // 수어번역 화면 컴포넌트 임포트
 
-const animations = ['수어번역', '마이페이지', '이용량', '로그아웃'];
+const animations = ['수어번역',  '이용량','마이페이지', '로그아웃'];
 
 const Translate = () => {
     const [view, setView] = useState('수어번역');
@@ -35,6 +36,7 @@ const Translate = () => {
                 activeView={view}
                 activeColor={activeColor}
             />
+            {view === '수어번역' && <Suus />} {/* 수어번역 페이지에서 Suus 컴포넌트 표시 */}
             {showPay && <Pay />} {/* Pay 컴포넌트 표시 */}
         </div>
     );
@@ -52,18 +54,18 @@ const Controls = ({ animations, onAnimationClick, activeView }) => {
     return (
         <ul className="controls">
             {animations.map((animation, index) => (
-              <li
-              key={animation}
-              onClick={() => onAnimationClick(animation, colors[index])}
-              className={animation === activeView ? 'active' : ''}
-              style={{
-                  backgroundColor: animation === activeView ? colors[index] : 'transparent',
-                  color: animation === activeView ? '#fff' : '#000000', // 기본 색상을 검정색으로 설정
-                  fontWeight: 'bold' // 모든 텍스트를 볼드체로 설정
-              }}
-          >
-              {animation}
-          </li>
+                <li
+                    key={animation}
+                    onClick={() => onAnimationClick(animation, colors[index])}
+                    className={animation === activeView ? 'active' : ''}
+                    style={{
+                        backgroundColor: animation === activeView ? colors[index] : 'transparent',
+                        color: animation === activeView ? '#fff' : '#000000', // 기본 색상을 검정색으로 설정
+                        fontWeight: 'bold' // 모든 텍스트를 볼드체로 설정
+                    }}
+                >
+                    {animation}
+                </li>
             ))}
         </ul>
     );
@@ -97,13 +99,10 @@ const TransitionComponent = ({ view }) => {
         <div className={`page ${view}`} onMouseEnter={enter} onMouseLeave={leave}>
             <div className="center">
                 {/* <h1 style={{ cursor: 'pointer' }}>{view}</h1> */}
-
             </div>
             <div>
-
             </div>
         </div>
-
     );
 };
 

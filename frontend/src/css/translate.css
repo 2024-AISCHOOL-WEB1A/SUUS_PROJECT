@@ -1,4 +1,4 @@
-/* Define colors */
+
 :root {
     --color1: #8900e4;
     --color2: #fa9c17;
@@ -8,7 +8,6 @@
     --color6: #fcf5d8;
 }
 
-/* Global styles */
 * {
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
@@ -135,3 +134,4 @@ h1 {
     color: #000000; /* 모든 h1 태그 텍스트 색상을 검정색으로 변경 */
     font-weight: bold; /* 모든 h1 태그 텍스트를 볼드체로 변경 */
 }
+

@@ -4,6 +4,8 @@ import Main from './pages/main.jsx';
 import Login from './pages/login.jsx';
 import Translate from './pages/translate.jsx';
 import Pay from './components/pay.jsx';
+import Suus from './components/suus.jsx'
+import Mypage from './components/mypage.jsx'
 
 function App() {
   return (
@@ -16,6 +18,8 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/translate" element={<Translate />} />
           <Route path="/pay" element={<Pay/>} />
+          <Route path="/suus" element={<Suus/>} />
+          <Route path="/mypage" element={<Mypage/>} />
         </Routes>
       </div>
     </Router>

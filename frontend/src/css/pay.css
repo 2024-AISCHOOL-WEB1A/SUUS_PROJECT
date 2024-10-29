@@ -1,5 +1,5 @@
 :root {
-  --custom-chart-bg-color: #0d1117;
+  --custom-chart-bg-color: #170e0d;
   --custom-line-color: #00ffff;
   --date-picker-bg-color: #394264;
   --date-picker-text-color: #ffffff;
@@ -9,16 +9,18 @@
 .date-picker-container {
   display: flex;
   align-items: center;
-  justify-content: flex-start; /* 왼쪽 정렬 */
+  justify-content: center !important; /* 가운데 정렬을 강제 적용 */
   background-color: var(--date-picker-bg-color);
   padding: 10px 20px;
-  border-radius: 8px;
+  border-radius: 5px;
   color: var(--date-picker-text-color);
   font-family: Arial, sans-serif;
   font-size: 14px;
   font-weight: 500;
   gap: 10px; /* 요소 간 간격 설정 */
+  margin-top: -20px;
 }
+
 
 .date-picker-container label {
   color: #fff;
@@ -70,16 +72,16 @@
 /* 차트 전체를 감싸는 wrapper */
 .chart-wrapper {
   background-color: var(--custom-chart-bg-color);
-  border-radius: 8px;
-  justify-content: space-between;
+  /* border-radius: 8px; */
+  /* justify-content: center center; */
   position: relative;
-  height: 600px; /* 높이를 조정하여 공간 확보 */
-  padding-top: px; /* 상단 아이콘 공간 확보 */
+  height: 650px; /* 높이를 조정하여 공간 확보 */
+  padding-top: 20px; /* 상단 아이콘 공간 확보 */
 }
 
 /* 차트 상단 햄버거 메뉴 아이콘 */
 .menu-icon-container {
-  margin-left: 600px; /* 날짜 선택기와 아이콘 간 간격 설정 */
+  margin-left: 0px; /* 날짜 선택기와 아이콘 간 간격 설정 */
 }
 
 /* 햄버거 아이콘 */
@@ -93,12 +95,12 @@
 /* 드롭다운 메뉴 */
 .menu-dropdown {
   position: absolute;
-  top: 40px;
-  right: 10px;
+  /* top: 40px; */
+  right: 450px;
   background-color: #fff;
   border-radius: 5px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  z-index: 2000;
+  z-index: 1000;
   color: #000;
 }
 
@@ -114,24 +116,30 @@
 
 /* 차트 컨테이너 */
 .chart-container {
-  width: 70%;
+  width: 2000px; /* 고정된 너비 */
+  height: 500px; /* 고정된 높이 */
   padding: 20px;
   display: flex;
   flex-direction: row;
-  margin-bottom: 20px; /* 차트와 표 사이의 간격 설정 */
+  margin-bottom: 300px; /* 차트와 표 사이의 간격 설정 */
+  background-color: var(--custom-chart-bg-color); /* 차트 배경색 */
+  gap: 50px;
+  margin-left: 300px;
+  margin-top: 40px;
 }
 
 /* 표 컨테이너 */
 .table-container {
-  width: 30%;
-  padding: 20px;
-  position: relative;
-  height: 400px; /* 차트와 같은 높이로 설정 */
-  overflow-y: auto;
-  
+  width: 600px;
+  max-height: 400px; /* 고정된 높이 */
+  /* padding: 90px; */
+  position: relative
+
+   /* 표 배경색 */
 }
+
 table {
-  width: 100%;
+  width: 200px;
   border-collapse: collapse;
 }
 
@@ -161,7 +169,8 @@ td:hover {
   gap: 10px;
   justify-content: center; /* 버튼을 중앙 정렬 */
   margin-top: 20px; /* 차트와 간격 설정 */
-  margin-left: -500px; 
+  
+  
 }
 
 .chart-controls button {
@@ -171,4 +180,5 @@ td:hover {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+ 
 }

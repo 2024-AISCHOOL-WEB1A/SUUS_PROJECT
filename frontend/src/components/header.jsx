@@ -9,6 +9,12 @@ const GlobalStyle = createGlobalStyle`
     font-weight: 400;
     font-style: normal;
   }
+  @font-face {
+    font-family: 'CookieRun-Regular';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/CookieRun-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
 `;
 
 const HeaderContainer = styled.header`
@@ -18,12 +24,11 @@ const HeaderContainer = styled.header`
   justify-content: center;
   background-color: white;
   padding: 20px;
- 
 `;
 
 const Title = styled.h1`
   color: #546999; /* 주어진 색상 */
-  font-family: 'Pretendard-Regular', sans-serif; /* Pretendard 폰트 사용 */
+  font-family: 'CookieRun-Regular', sans-serif; /* CookieRun-Regular 폰트 적용 */
   font-size: 2rem; /* 제목 크기 조정 */
   margin: 0; /* 기본 마진 제거 */
 `;
@@ -40,7 +45,7 @@ const Header = () => {
     <>
       <GlobalStyle /> {/* 글로벌 스타일 적용 */}
       <HeaderContainer>
-        <Title>suus</Title>
+        <Title >수어스</Title>
         <Subtitle>우리의 소리를 담아 너에게</Subtitle>
       </HeaderContainer>
     </>
