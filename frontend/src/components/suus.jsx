@@ -20,7 +20,7 @@ const Translate = () => {
       <img src='/imgs/주석.png' alt='주석'></img>
       {/* 버튼 클릭 시 메뉴 상태 토글 */}
       <button className={`round ${menuActive ? 'active' : ''}`} onClick={openModal}>
-        Start
+      <span className="button-text">Start</span>
       </button>
 
       {/* 모달 창 */}

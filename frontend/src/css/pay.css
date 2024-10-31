@@ -1,15 +1,26 @@
+@font-face {
+  font-family: 'Pretendard-Regular';
+  src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+
 :root {
-  --custom-chart-bg-color: #170e0d;
-  --custom-line-color: #00ffff;
-  --date-picker-bg-color: #394264;
+  --custom-chart-bg-color: #ffffff;
+  --custom-line-color: #007bff;
+  --date-picker-bg-color: #416cc9f8; /* 날짜 선택기 배경색을 약간 밝게 변경 */
   --date-picker-text-color: #ffffff;
+  --table-bg-color: #b7b0e224; /* 표 배경색을 밝게 설정 */
+  --table-header-bg-color: #416cc9c9; /* 표 헤더 배경색을 밝게 설정 */
+  --table-border-color: #26292f; /* 표 테두리 색상 설정 */
+  --table-hover-bg-color:  #416cc9f8; /* 표 셀 호버 배경색 설정 */
 }
 
 /* 날짜 선택기 스타일 */
 .date-picker-container {
   display: flex;
   align-items: center;
-  justify-content: center !important; /* 가운데 정렬을 강제 적용 */
+  justify-content: center !important;
   background-color: var(--date-picker-bg-color);
   padding: 10px 20px;
   border-radius: 5px;
@@ -17,10 +28,9 @@
   font-family: Arial, sans-serif;
   font-size: 14px;
   font-weight: 500;
-  gap: 10px; /* 요소 간 간격 설정 */
+  gap: 10px;
   margin-top: -20px;
 }
-
 
 .date-picker-container label {
   color: #fff;
@@ -36,55 +46,51 @@
 .react-datepicker__input-container input {
   width: 100%;
   padding: 8px;
-  background-color: #161b22;
+  background-color: #1f2633;
   color: #fff;
-  border: 1px solid #394264;
+  border: 1px solid #5a647a;
   border-radius: 5px;
   font-size: 14px;
 }
 
 /* DatePicker 캘린더 기본 스타일 */
 .react-datepicker {
-  background-color: #ffffff; /* 캘린더 배경을 흰색으로 설정 */
-  color: #000000; /* 글자 색상을 검정색으로 설정 */
+  background-color: #ffffff;
+  color: #000000;
   border: none;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* 요일 머리글 스타일 */
 .react-datepicker__day,
 .react-datepicker__header {
-  color: #000000; /* 글자 색상을 검정색으로 설정 */
+  color: #000000;
 }
 
-/* 선택된 날짜 스타일 */
 .react-datepicker__day--selected {
-  background-color: #00ffff; /* 선택된 날짜 배경색 */
-  color: #0d1117; /* 선택된 날짜 글자 색상 */
+  background-color: #007bff;
+  color: #0d1117;
 }
 
-/* hover 상태에서의 날짜 스타일 */
 .react-datepicker__day:hover {
-  background-color: rgba(0, 255, 255, 0.2); /* hover 시 배경색 */
-  color: #0d1117; /* hover 시 글자 색상 */
+  background-color: rgba(0, 123, 255, 0.2);
+  color: #0d1117;
 }
 
 /* 차트 전체를 감싸는 wrapper */
 .chart-wrapper {
   background-color: var(--custom-chart-bg-color);
-  /* border-radius: 8px; */
-  /* justify-content: center center; */
   position: relative;
-  height: 650px; /* 높이를 조정하여 공간 확보 */
-  padding-top: 20px; /* 상단 아이콘 공간 확보 */
+  height: 650px;
+  padding-top: 5px;
+  right: 0px;
+  scale: 90%;
 }
 
 /* 차트 상단 햄버거 메뉴 아이콘 */
 .menu-icon-container {
-  margin-left: 0px; /* 날짜 선택기와 아이콘 간 간격 설정 */
+  margin-left: 0px;
 }
 
-/* 햄버거 아이콘 */
 .menu-icon {
   background: none;
   border: none;
@@ -92,11 +98,9 @@
   z-index: 1000;
 }
 
-/* 드롭다운 메뉴 */
 .menu-dropdown {
   position: absolute;
-  /* top: 40px; */
-  right: 450px;
+  right: 250px;
   background-color: #fff;
   border-radius: 5px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -116,69 +120,74 @@
 
 /* 차트 컨테이너 */
 .chart-container {
-  width: 2000px; /* 고정된 너비 */
-  height: 500px; /* 고정된 높이 */
+  max-width: 1000px;
+  height: 500px;
   padding: 20px;
   display: flex;
   flex-direction: row;
-  margin-bottom: 300px; /* 차트와 표 사이의 간격 설정 */
-  background-color: var(--custom-chart-bg-color); /* 차트 배경색 */
-  gap: 50px;
-  margin-left: 300px;
+  margin-bottom: 300px;
+  background-color: var(--custom-chart-bg-color);
+  gap: 10px;
+  margin-left: 20px;
   margin-top: 40px;
 }
 
 /* 표 컨테이너 */
 .table-container {
-  width: 600px;
-  max-height: 400px; /* 고정된 높이 */
-  /* padding: 90px; */
-  position: relative
+  width: 200px;
+  max-height: 400px;
+  position: relative;
 
-   /* 표 배경색 */
+ 
 }
 
 table {
   width: 200px;
   border-collapse: collapse;
+  
 }
 
 th, td {
   padding: 8px;
   text-align: left;
-  border: 1px solid #30363d;
+  border: 1px solid var(--table-border-color);
 }
 
 th {
-  background-color: #21262d;
-  color: #fff;
+  background-color: var(--table-header-bg-color);
+  color: #000;
 }
 
 td {
-  background-color: #161b22;
-  color: #fff;
+  background-color: var(--table-bg-color);
+  color: #000;
+  font-family: 'Pretendard-Regular';
 }
 
 td:hover {
-  background-color: #30363d;
+  background-color: var(--table-hover-bg-color);
 }
 
 /* 차트 아래 Year, Month, Week 버튼 컨트롤 */
 .chart-controls {
   display: flex;
   gap: 10px;
-  justify-content: center; /* 버튼을 중앙 정렬 */
-  margin-top: 20px; /* 차트와 간격 설정 */
-  
+  justify-content: center;
+  margin-top: 20px;
   
 }
 
 .chart-controls button {
-  padding: 8px 12px;
-  background-color: #394264;
-  color: #fff;
+  padding: 10px 16px;
+  background-color: #b7b0e26c;
+  color: #000000;
   border: none;
   border-radius: 5px;
   cursor: pointer;
- 
+  transition: transform 0.2s ease, background-color 0.3s ease;
+  font-family: 'Pretendard-Regular';
+}
+
+.chart-controls button:active {
+  transform: scale(1.2); /* 클릭 시 확대 효과 */
 }

@@ -1,34 +1,34 @@
+// Translate.js
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom'; // Link와 useNavigate 임포트
+import { useNavigate } from 'react-router-dom';
 import '../css/translate.css';
-import { TweenMax, Power4 } from 'gsap'; // GSAP 설치 확인
-import Header from '../components/header'; // 헤더 임포트
-import Pay from '../components/pay'; // 차트 컴포넌트 임포트
-import Suus from '../components/suus'; // 수어번역 화면 컴포넌트 임포트
+import { TweenMax, Power4 } from 'gsap';
+import Header from '../components/header';
+import Pay from '../components/pay';
+import Suus from '../components/suus';
+import MyPage from '../components/mypage'; // 확장자 추가
+ // 마이페이지 컴포넌트 임포트
 
-const animations = ['수어번역',  '이용량','마이페이지', '로그아웃'];
+const animations = ['수어번역', '마이페이지', '로그아웃'];
 
 const Translate = () => {
     const [view, setView] = useState('수어번역');
-    const [activeColor, setActiveColor] = useState(''); // 기본 색상 없음
-    const [showPay, setShowPay] = useState(false); // Pay 컴포넌트 표시 여부
-    const navigate = useNavigate(); // useNavigate 훅 사용
+    const [activeColor, setActiveColor] = useState('');
+    const [showPay, setShowPay] = useState(false);
+    const navigate = useNavigate();
 
     const handleAnimationClick = (animation, color) => {
         setView(animation);
-        setActiveColor(color); // 활성화된 버튼 색상 변경
+        setActiveColor(color);
 
-        // '이용량' 버튼 클릭 시 Pay 컴포넌트 표시 또는 숨기기
-        if (animation === '이용량') {
-            setShowPay((prev) => !prev); // Pay 컴포넌트 토글
-        } else {
-            setShowPay(false); // 다른 버튼 클릭 시 Pay 컴포넌트 숨기기
+        if (animation === '로그아웃') {
+            navigate('/login'); // 로그아웃 시 로그인 페이지로 이동
         }
     };
 
     return (
         <div id="app">
-            <Header /> {/* 헤더 추가 */}
+            <Header />
             <TransitionComponent view={view} />
             <Controls
                 animations={animations}
@@ -36,8 +36,9 @@ const Translate = () => {
                 activeView={view}
                 activeColor={activeColor}
             />
-            {view === '수어번역' && <Suus />} {/* 수어번역 페이지에서 Suus 컴포넌트 표시 */}
-            {showPay && <Pay />} {/* Pay 컴포넌트 표시 */}
+            {view === '수어번역' && <Suus />}
+            {view === '마이페이지' && <MyPage/>} {/* 마이페이지 컴포넌트 표시 */}
+          
         </div>
     );
 };
@@ -60,8 +61,8 @@ const Controls = ({ animations, onAnimationClick, activeView }) => {
                     className={animation === activeView ? 'active' : ''}
                     style={{
                         backgroundColor: animation === activeView ? colors[index] : 'transparent',
-                        color: animation === activeView ? '#fff' : '#000000', // 기본 색상을 검정색으로 설정
-                        fontWeight: 'bold' // 모든 텍스트를 볼드체로 설정
+                        color: animation === activeView ? '#fff' : '#000000',
+                        fontWeight: 'bold'
                     }}
                 >
                     {animation}

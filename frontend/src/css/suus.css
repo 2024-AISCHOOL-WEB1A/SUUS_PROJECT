@@ -6,25 +6,34 @@
     right: 2em;
     bottom: 2em;
     width: 5em;
-    height: 5em;
+    height:5em;
     border-radius: 100%;
     border: 0;
-    background: #B90504;
+    background:  #2c4ebe;
     color: #fff;
     transition: background 1s;
-    font-weight: bold;
+    
   }
+  .button-text {
+    font-size: 1.2em; /* 텍스트 크기 설정 */
+     /* 버튼 안에서 텍스트를 수직 가운데 정렬 */
+    display: block;
+    letter-spacing: 1.3px;
+    font-weight: bold;
+    
+}
   
   .round.active {
     background: #333333;
     animation: roll 1s forwards;
+    
   }
   
   /* 메뉴 스타일 */
   .menu {
     display: none;
     list-style-type: none;
-    background: #B90504;
+    background:  #2c4ebe;
     color: #fff;
     padding: 0;
     margin: 0;
