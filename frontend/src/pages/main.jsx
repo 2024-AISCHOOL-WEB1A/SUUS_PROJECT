@@ -10,29 +10,23 @@ const Main = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
-
-        const tl = gsap.timeline({
-            scrollTrigger: {
-                trigger: ".wrapper",
-                start: "top top",
-                end: "+=300%",
-                pin: true,
-                scrub: 0.5, // 스크럽 속도 조정
-                markers: false // 마커를 숨김
-            }
-        })
-        .to("img", {
+        gsap.registerPlugin(ScrollToPlugin);
+    
+        // 이미지 자동 확대 애니메이션
+        gsap.to("img", {
             scale: 2,
             z: 350,
             transformOrigin: "center center",
-            ease: "power1.inOut"
+            ease: "power1.inOut",
+            duration: 2 // 애니메이션 지속 시간 조정
         });
-
-        return () => {
-            tl.kill();
-            ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-        };
+    
+        gsap.to(".overlay-img", {
+            scale: 0.2,
+            transformOrigin: "center center",
+            ease: "power1.inOut",
+            duration: 2 // 애니메이션 지속 시간 조정
+        });
     }, []);
 
     const handleArrowClick = () => {

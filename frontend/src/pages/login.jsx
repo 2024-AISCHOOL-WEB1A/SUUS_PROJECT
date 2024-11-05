@@ -51,7 +51,7 @@ const OverlayContainer = styled.div`
   left: 50%;
   width: 50%;
   height: 100%;
-  background-color: #f0f0f0;
+  background-color: #b7b0e26c;
   display: flex;
   flex-direction: column;
   justify-content: center;

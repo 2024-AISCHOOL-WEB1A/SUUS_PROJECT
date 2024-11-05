@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import '../css/person.css';
 
+// 초기 이미지를 명확하게 지정
 const Person = ({ onImageChange }) => {
     const [formData, setFormData] = useState({
         name: '정부 24',
@@ -9,10 +10,9 @@ const Person = ({ onImageChange }) => {
         website: '',
         password: '********'
     });
-    const [profileImage, setProfileImage] = useState('https://via.placeholder.com/150');
+    const [profileImage, setProfileImage] = useState('/imgs/Group.73.png'); // 업로드한 이미지 경로
     const [selectedFileName, setSelectedFileName] = useState('');
 
-    // 컴포넌트가 마운트될 때 이전에 설정한 이미지를 가져오기
     useEffect(() => {
         const savedImage = localStorage.getItem('profileImage');
         if (savedImage) {
@@ -35,13 +35,13 @@ const Person = ({ onImageChange }) => {
             setProfileImage(imageUrl);
             setSelectedFileName(file.name);
             onImageChange(imageUrl);
-            localStorage.setItem('profileImage', imageUrl);  // 이미지 URL을 localStorage에 저장
+            localStorage.setItem('profileImage', imageUrl);
         }
     };
 
     return (
         <div className="account-setting">
-            <h2>Account Setting</h2>
+            <h2 className='h2person'>Account Setting</h2>
             <div className="tabs">
                 {/* 탭 내용 */}
             </div>
@@ -57,7 +57,6 @@ const Person = ({ onImageChange }) => {
                             style={{ display: 'none' }}
                         />
                     </label>
-                    
                 </div>
                 <div className="profile-info">
                     <form>

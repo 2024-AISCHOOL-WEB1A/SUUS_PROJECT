@@ -60,7 +60,7 @@ const Dashboard = () => {
                 </button>
             </aside>
 
-            <main className="content">
+            <main className="content1">
                 <header className="content-header">
                     <h1>Hello, 정부24</h1>
                     <p>Good day to learn!</p>

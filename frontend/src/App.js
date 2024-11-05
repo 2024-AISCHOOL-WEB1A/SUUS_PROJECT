@@ -8,9 +8,7 @@ import Pay from './components/pay.jsx';
 import Suus from './components/suus.jsx';
 import Mypage from './components/mypage.jsx';
 import Personpage from './components/person.jsx';
-import Tosspage from './components/client/tosspage.js';
-import Success from './components/client/success.js'; // Success 컴포넌트를 불러오는 경로가 정확한지 확인
-import Fail from './components/client/fail.js';
+import Card from './components/card.jsx'
 
 function App() {
   return (
@@ -24,9 +22,7 @@ function App() {
           <Route path="/suus" element={<Suus />} />
           <Route path="/mypage" element={<Mypage />} />
           <Route path="/personpage" element={<Personpage />} />
-          <Route path="/tosspage" element={<Tosspage />} />
-          <Route path="/success" element={<Success />} /> {/* Success 컴포넌트를 /success 경로에 연결 */}
-          <Route path="/fail" element={<Fail />} />
+          <Route path="/card" element={<Card />} />
         </Routes>
       </div>
     </Router>
